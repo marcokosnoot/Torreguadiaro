@@ -111,6 +111,7 @@
       <li><a href="#cappuccino">Contact</a></li>
     </ul>
   </nav>
+  <div class="content" id="content">
   <main>
     <section id="espresso">
       <h2>Kom genieten in ons appartement aan de Costa Del Sol</h2>
@@ -132,8 +133,28 @@ Kortom, Torreguadiaro biedt de ideale mix van ontspanning, culinaire verwennerij
       <img src="https://raw.githubusercontent.com/marcokosnoot/Torreguadiaro/main/b4a03de3-a21e-4517-9735-de1d10247186.jpeg" alt="Cappuccino">
     </section>
   </main>
+  </div>
   <footer>
     <p></p>
   </footer>
+  <script>
+    function loadPage(page) {
+      // Maak een XMLHttpRequest-object aan
+      var xhttp = new XMLHttpRequest();
+
+      // Configureer de HTTP GET-verzoek
+      xhttp.open("GET", page, true);
+
+      // Definieer de callback-functie om de inhoud te wijzigen
+      xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          document.getElementById("content").innerHTML = this.responseText;
+        }
+      };
+
+      // Voer het verzoek uit
+      xhttp.send();
+    }
+  </script>
 </body>
 </html>
