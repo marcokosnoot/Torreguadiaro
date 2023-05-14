@@ -1,47 +1,52 @@
-// Simulated booked dates
-var bookedDates = ["2023-05-10", "2023-05-15", "2023-05-20"];
+// Define your available and unavailable dates
+const availableDates = ['2023-06-01', '2023-06-02', '2023-06-03', '2023-06-10'];
+const unavailableDates = ['2023-06-04', '2023-06-05', '2023-06-11'];
 
-// Function to render the calendar
+// Render the availability calendar
 function renderCalendar() {
-  var calendar = document.getElementById("calendar");
-  calendar.innerHTML = "";
+  const calendarElement = document.getElementById('calendar');
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
-  var date = new Date();
-  var year = date.getFullYear();
-  var month = date.getMonth();
+  // Clear the calendar
+  calendarElement.innerHTML = '';
 
-  var currentDate = new Date(year, month, 1);
-  var lastDay = new Date(year, month + 1, 0).getDate();
-
-  var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  // Render day names
-  for (var i = 0; i < 7; i++) {
-    var dayName = document.createElement("div");
-    dayName.classList.add("day");
-    dayName.innerHTML = days[i];
-    calendar.appendChild(dayName);
+  // Add the days of the week
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  for (let i = 0; i < daysOfWeek.length; i++) {
+    const dayOfWeekElement = document.createElement('div');
+    dayOfWeekElement.classList.add('calendar-day');
+    dayOfWeekElement.textContent = daysOfWeek[i];
+    calendarElement.appendChild(dayOfWeekElement);
   }
 
-  // Render days
-  for (var i = 0; i < currentDate.getDay(); i++) {
-    var emptyDay = document.createElement("div");
-    emptyDay.classList.add("day");
-    calendar.appendChild(emptyDay);
+  // Add empty cells for the days before the first day of the month
+  for (let i = 0; i < firstDayOfMonth; i++) {
+    const emptyCell = document.createElement('div');
+    emptyCell.classList.add('calendar-day');
+    calendarElement.appendChild(emptyCell);
   }
 
-  for (var i = 1; i <= lastDay; i++) {
-    var day = document.createElement("div");
-    day.classList.add("day");
-    day.innerHTML = i;
+  // Add the days of the month
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dayElement = document.createElement('div');
+    dayElement.classList.add('calendar-day');
+    dayElement.textContent = day;
 
-    if (bookedDates.includes(year + "-" + (month + 1) + "-" + i)) {
-      day.classList.add("booked");
+    const date = `${currentYear}-${currentMonth + 1}-${day.toString().padStart(2, '0')}`;
+    if (availableDates.includes(date)) {
+      dayElement.classList.add('available');
+    } else if (unavailableDates.includes(date)) {
+      dayElement.classList.add('unavailable');
+      dayElement.setAttribute('disabled', true);
     }
 
-    calendar.appendChild(day);
+    calendarElement.appendChild(dayElement);
   }
 }
 
-// Call the renderCalendar function
+// Call the renderCalendar function to display the initial calendar
 renderCalendar();
