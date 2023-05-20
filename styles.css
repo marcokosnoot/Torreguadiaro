@@ -68,6 +68,9 @@ body {
     text-transform: uppercase;
     color: #ffaf87;
   }
+  label {
+    font-size: 18px;
+  }
   p {
     margin: 0;
     margin-bottom: 20px;
