@@ -7,6 +7,7 @@ body {
   }
   form-label {
     font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
   }
   header {
     background-color: #ffaf87;
