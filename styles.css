@@ -5,14 +5,14 @@ body {
     margin: 0;
     padding: 0;
   }
-    form-group {
+    .form-group {
       display: flex;
       align-items: center;
     }
-    form-group label {
+    .form-group label {
       flex-basis: 100px; /* Adjust the width of the label as needed */
     }
-    form-group input {
+    .form-group input {
       flex-grow: 1;
       height: 100%; /* Set the input height to match the label height */
       padding: 5px; /* Adjust the padding as needed */
