@@ -68,8 +68,8 @@ body {
     text-transform: uppercase;
     color: #ffaf87;
   }
-  form {
-    font-size: 18px;
+  label {
+    font-family: inherit;
   }
   p {
     margin: 0;
