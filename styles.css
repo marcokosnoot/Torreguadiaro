@@ -5,6 +5,9 @@ body {
     margin: 0;
     padding: 0;
   }
+  .form-label {
+    font-family: 'Montserrat', sans-serif;
+  }
   header {
     background-color: #ffaf87;
     padding: 10px;
