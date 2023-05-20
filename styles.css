@@ -14,6 +14,7 @@ body {
     }
     .form-group input {
       flex-grow: 1;
+      width: 500px;
       height: 100%; /* Set the input height to match the label height */
       padding: 5px; /* Adjust the padding as needed */
     }  
